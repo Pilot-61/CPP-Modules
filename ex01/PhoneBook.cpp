@@ -4,8 +4,6 @@
 
 PhoneBook::PhoneBook() : count(0), oldestIndex(0) {}
 
-PhoneBook::~PhoneBook() {}
-
 std::string PhoneBook::trimStr(const std::string &str) const {
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
@@ -19,12 +17,12 @@ void PhoneBook::addCont(const Contact &contact) {
         this->count++;
 }
 
-void PhoneBook::showCont() const {
+void PhoneBook::showCont() {
     std::cout << std::setw(10) << "Index" << "|";
     std::cout << std::setw(10) << "First Name" << "|";
     std::cout << std::setw(10) << "Last Name" << "|";
     std::cout << std::setw(10) << "Nickname" << std::endl;
-    
+    std::cout << "---------------------------------------------" << std::endl;
     for (int i = 0; i < this->count; i++) {
         std::cout << std::setw(10) << i << "|";
         std::cout << std::setw(10) << trimStr(this->contacts[i].getFirstName()) << "|";
@@ -33,7 +31,8 @@ void PhoneBook::showCont() const {
     }
 }
 
-void PhoneBook::showDetails(int index) const {
+
+void PhoneBook::showDetails(int index){
     if (index < 0 || index >= this->count) {
         std::cout << "Invalid index." << std::endl;
         return;
@@ -46,7 +45,7 @@ void PhoneBook::showDetails(int index) const {
     std::cout << "Darkest Secret: " << this->contacts[index].getDarkestSecret() << std::endl;
 }
 
-void PhoneBook::searchContact() const {
+void PhoneBook::searchContact(){
     if (this->count == 0) {
         std::cout << "Phonebook is empty." << std::endl;
         return;
@@ -64,6 +63,7 @@ void PhoneBook::searchContact() const {
         std::cout << "Invalid input." << std::endl;
         return;
     }
+    
     
     std::cin.ignore(10000, '\n');
     this->showDetails(index);

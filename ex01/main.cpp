@@ -14,6 +14,16 @@ bool isEmptyOrWhitespace(const std::string &str)
     return true;
 }
 
+bool isPrintable(const std::string &str)
+{
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        if (!std::isprint(str[i]))
+            return false;
+    }
+    return true;
+}
+
 Contact createContact()
 {
     Contact contact;
@@ -24,9 +34,9 @@ Contact createContact()
         std::cout << "Enter first name: ";
         if (!std::getline(std::cin, input)) {
             std::cout << "\nEOF detected. Exiting safely...\n";
-            break;
+            return contact;
         }
-        if (!isEmptyOrWhitespace(input))
+        if (!isEmptyOrWhitespace(input) && isPrintable(input))
         {
             contact.setFirstName(input);
             break;
@@ -39,9 +49,9 @@ Contact createContact()
         std::cout << "Enter last name: ";
         if (!std::getline(std::cin, input)) {
             std::cout << "\nEOF detected. Exiting safely...\n";
-            break;
+            return contact;
         }
-        if (!isEmptyOrWhitespace(input))
+        if (!isEmptyOrWhitespace(input) && isPrintable(input))
         {
             contact.setLastName(input);
             break;
@@ -54,9 +64,9 @@ Contact createContact()
         std::cout << "Enter nickname: ";
         if (!std::getline(std::cin, input)) {
             std::cout << "\nEOF detected. Exiting safely...\n";
-            break;
+            return contact;
         }
-        if (!isEmptyOrWhitespace(input))
+        if (!isEmptyOrWhitespace(input) && isPrintable(input))
         {
             contact.setNickname(input);
             break;
@@ -69,9 +79,9 @@ Contact createContact()
         std::cout << "Enter phone number: ";
         if (!std::getline(std::cin, input)) {
             std::cout << "\nEOF detected. Exiting safely...\n";
-            break;
+            return contact;
         }
-        if (!isEmptyOrWhitespace(input))
+        if (!isEmptyOrWhitespace(input) && isPrintable(input))
         {
             contact.setPhoneNumber(input);
             break;
@@ -84,9 +94,9 @@ Contact createContact()
         std::cout << "Enter darkest secret: ";
         if (!std::getline(std::cin, input)) {
             std::cout << "\nEOF detected. Exiting safely...\n";
-            break;
+            return contact;
         }
-        if (!isEmptyOrWhitespace(input))
+        if (!isEmptyOrWhitespace(input) && isPrintable(input))
         {
             contact.setDarkestSecret(input);
             break;
@@ -101,6 +111,7 @@ int main()
 {
     PhoneBook phoneBook;
     std::string command;
+    
     
     while (true) {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";

@@ -11,14 +11,13 @@ private:
     int oldestIndex;
     
     std::string trimStr(const std::string &str) const;
-    void showDetails(int index) const;
-    void showCont() const;
+    void showDetails(int index);
+    void showCont();
 
 public:
     PhoneBook();
-    ~PhoneBook();
     void addCont(const Contact &contact);
-    void searchContact() const;
+    void searchContact();
 };
 
 #endif
