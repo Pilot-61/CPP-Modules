@@ -1,6 +1,7 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 
 PhoneBook::PhoneBook() : count(0), oldestIndex(0) {}
 
@@ -54,17 +55,18 @@ void PhoneBook::searchContact(){
     this->showCont();
     
     std::cout << "Enter index to display: ";
-    int index;
-    std::cin >> index;
-    
-    if (std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore(10000, '\n');
+    int index = 0;
+    std::string input;
+    std::getline(std::cin, input);
+    if (input.empty()) {
         std::cout << "Invalid input." << std::endl;
         return;
     }
-    
-    
-    std::cin.ignore(10000, '\n');
+    char *end;
+    index = std::strtol(input.c_str(), &end, 10);
+    if (*end != '\0') {
+        std::cout << "Invalid input." << std::endl;
+        return;
+    }
     this->showDetails(index);
 }
