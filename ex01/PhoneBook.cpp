@@ -58,6 +58,10 @@ void PhoneBook::searchContact(){
     int index = 0;
     std::string input;
     std::getline(std::cin, input);
+    if (std::cin.eof()) {
+        std::cout << "\nEOF detected. Exiting safely...\n";
+        std::exit(0);
+    }
     if (input.empty()) {
         std::cout << "Invalid input." << std::endl;
         return;
