@@ -10,7 +10,7 @@ private:
     int count;
     int oldestIndex;
     
-    std::string trimStr(const std::string &str) const;
+    std::string trimStr(const std::string &str);
     void showDetails(int index);
     void showCont();
 

@@ -5,7 +5,7 @@
 
 PhoneBook::PhoneBook() : count(0), oldestIndex(0) {}
 
-std::string PhoneBook::trimStr(const std::string &str) const {
+std::string PhoneBook::trimStr(const std::string &str) {
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
     return str;
