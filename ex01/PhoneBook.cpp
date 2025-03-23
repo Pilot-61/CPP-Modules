@@ -6,9 +6,16 @@
 PhoneBook::PhoneBook() : count(0), oldestIndex(0) {}
 
 std::string PhoneBook::trimStr(const std::string &str) {
+    size_t start = 0;
+    size_t end = str.length();
+    while (start < end && std::isspace(str[start]))
+        start++;
+    while (end > start && std::isspace(str[end - 1]))
+        end--;
+    std::string trimmed = str.substr(start, end - start);
     if (str.length() > 10)
-        return str.substr(0, 9) + ".";
-    return str;
+        return trimmed.substr(0, 9) + ".";
+    return trimmed;
 }
 
 void PhoneBook::addCont(const Contact &contact) {
