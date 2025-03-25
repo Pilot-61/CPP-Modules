@@ -7,7 +7,7 @@ Zombie::Zombie(const std::string& name) : m_name(name) {}
 
 Zombie::~Zombie() {
     if (!m_name.empty()) {
-        std::cout << "Zombie " << m_name << " has been eliminated!" << std::endl;
+        std::cout << m_name << " has been eliminated!" << std::endl;
     }
 }
 

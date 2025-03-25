@@ -2,19 +2,16 @@
 #include <sstream>
 #include "Zombie.hpp"
 
-Zombie* zombieHorde(int N, const std::string& name) {
-    if (N <= 0) {
-        std::cerr << "Invalid horde size. Must be positive." << std::endl;
-        return 0;
-    }
+Zombie* zombieHorde( int N, std::string name )
+{
+	Zombie *Zombies = new (std::nothrow) Zombie[N];
+	if (!Zombies)
+	{
+		std::cerr << "Memory allocation failed" << std::endl;
+		return NULL;
+	}
 
-    Zombie* horde = new Zombie[N];
-
-    for (int i = 0; i < N; ++i) {
-        std::stringstream ss;
-        ss << i + 1;
-        std::string zombieName = name + "_" + ss.str();
-        horde[i].setName(zombieName);
-    }
-    return horde;
+	for (int i = 0; i < N; i++)
+		Zombies[i].setName(name);
+	return Zombies;
 }
