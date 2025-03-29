@@ -1,19 +1,17 @@
-
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
 NAME = zombieHorde
 SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 OBJS = $(SRCS:.cpp=.o)
 HEADERS = Zombie.hpp
+C = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(C) $(CFLAGS) -o $@ $^
 
 %.o: %.cpp Zombie.h
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(C) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

@@ -1,16 +1,16 @@
-NAME = zombie
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+NAME = replace
+SRCS = main.cpp StoreData.cpp
+HEADERS = StoreData.hpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = Zombie.hpp
 C = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADERS)
-	$(C) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	$(C) $(CFLAGS) -o $@ $^
 
-%.o: %.cpp Zombie.hpp
+%.o: %.cpp $(HEADERS)
 	$(C) $(CFLAGS) -c $< -o $@
 
 clean:
