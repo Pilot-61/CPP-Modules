@@ -35,7 +35,9 @@ void StoreData::replaceOcc()
             line.insert(pos, s2);
             pos += s2.length();
         }
-        outfile << line << std::endl;
+        outfile << line;
+        if (!infile.eof())
+            outfile << std::endl;
     }
 
     infile.close();
