@@ -9,7 +9,7 @@ StoreData::StoreData(std::string filename, std::string s1, std::string s2)
 
 void StoreData::replaceOcc()
 {
-    std::ifstream infile(filename.c_str());
+    std::fstream infile(filename.c_str());
     if (!infile)
     {
         std::cerr << "Error: could not open file " << filename << std::endl;
@@ -25,8 +25,12 @@ void StoreData::replaceOcc()
         std::cerr << "Error: could not open file " << newFile << std::endl;
         return;
     }
-
-    while (std::getline(infile, line))
+    if (s1.empty())
+    {
+        std::cerr << "Error: s1 or s2 is empty" << std::endl;
+        return;
+    }
+    while (std::getline(infile, line, '\0'))
     {
         size_t pos = 0;
         while ((pos = line.find(s1, pos)) != std::string::npos)
@@ -36,8 +40,6 @@ void StoreData::replaceOcc()
             pos += s2.length();
         }
         outfile << line;
-        if (!infile.eof())
-            outfile << std::endl;
     }
 
     infile.close();
