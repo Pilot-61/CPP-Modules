@@ -5,12 +5,12 @@ Fixed::Fixed() : fixedPointValue(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(int value) : fixedPointValue(value << fractionalBits)
+Fixed::Fixed(int value) : fixedPointValue(value << fraBits)
 {
     std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(float value) : fixedPointValue(roundf(value * (1 << fractionalBits)))
+Fixed::Fixed(float value) : fixedPointValue(roundf(value * (1 << fraBits)))
 {
     std::cout << "Float constructor called" << std::endl;
 }
@@ -48,12 +48,12 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat() const
 {
-    return ((float) this->fixedPointValue / (1 << fractionalBits));
+    return ((float) this->fixedPointValue / (1 << fraBits));
 }
 
 int Fixed::toInt() const
 {
-    return this->fixedPointValue >> fractionalBits;
+    return this->fixedPointValue >> fraBits;
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
@@ -64,68 +64,68 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 
 // Comparison operators
 
-bool Fixed::operator>(const Fixed &rhs) const
+bool Fixed::operator>(const Fixed &oth) const
 {
-    return this->fixedPointValue > rhs.fixedPointValue;
+    return this->fixedPointValue > oth.fixedPointValue;
 }
 
-bool Fixed::operator<(const Fixed &rhs) const
+bool Fixed::operator<(const Fixed &oth) const
 {
-    return this->fixedPointValue < rhs.fixedPointValue;
+    return this->fixedPointValue < oth.fixedPointValue;
 }
 
-bool Fixed::operator>=(const Fixed &rhs) const
+bool Fixed::operator>=(const Fixed &oth) const
 {
-    return this->fixedPointValue >= rhs.fixedPointValue;
+    return this->fixedPointValue >= oth.fixedPointValue;
 }
 
-bool Fixed::operator<=(const Fixed &rhs) const
+bool Fixed::operator<=(const Fixed &oth) const
 {
-    return this->fixedPointValue <= rhs.fixedPointValue;
+    return this->fixedPointValue <= oth.fixedPointValue;
 }
 
-bool Fixed::operator==(const Fixed &rhs) const
+bool Fixed::operator==(const Fixed &oth) const
 {
-    return this->fixedPointValue == rhs.fixedPointValue;
+    return this->fixedPointValue == oth.fixedPointValue;
 }
 
-bool Fixed::operator!=(const Fixed &rhs) const
+bool Fixed::operator!=(const Fixed &oth) const
 {
-    return this->fixedPointValue != rhs.fixedPointValue;
+    return this->fixedPointValue != oth.fixedPointValue;
 }
 
 // Arithmetic operators
 
-Fixed Fixed::operator+(const Fixed &rhs) const
+Fixed Fixed::operator+(const Fixed &oth) const
 {
     Fixed result;
-    result.setRawBits(this->fixedPointValue + rhs.fixedPointValue);
+    result.setRawBits(this->fixedPointValue + oth.fixedPointValue);
     return result;
 }
 
-Fixed Fixed::operator-(const Fixed &rhs) const
+Fixed Fixed::operator-(const Fixed &oth) const
 {
     Fixed result;
-    result.setRawBits(this->fixedPointValue - rhs.fixedPointValue);
+    result.setRawBits(this->fixedPointValue - oth.fixedPointValue);
     return result;
 }
 
-Fixed Fixed::operator*(const Fixed &rhs) const
+Fixed Fixed::operator*(const Fixed &oth) const
 {
     Fixed result;
-    result.setRawBits((this->fixedPointValue * rhs.fixedPointValue) >> fractionalBits);
+    result.setRawBits((this->fixedPointValue * oth.fixedPointValue) >> fraBits);
     return result;
 }
 
-Fixed Fixed::operator/(const Fixed &rhs) const
+Fixed Fixed::operator/(const Fixed &oth) const
 {
-    if (rhs.fixedPointValue == 0)
+    if (oth.fixedPointValue == 0)
     {
         std::cerr << "Error: Division by zero" << std::endl;
         return Fixed();
     }
     Fixed result;
-    result.setRawBits((this->fixedPointValue << fractionalBits) / rhs.fixedPointValue);
+    result.setRawBits((this->fixedPointValue << fraBits) / oth.fixedPointValue);
     return result;
 }
 

@@ -9,7 +9,7 @@ class Fixed
 {
 private:
     int                 fixedPointValue;
-    static const int    fractionalBits = 8;
+    static const int    fraBits = 8;
 
 public:
     Fixed();
@@ -19,18 +19,18 @@ public:
     ~Fixed();
     Fixed &operator=(const Fixed &other);
 
-    bool operator>(const Fixed &rhs) const;
-    bool operator<(const Fixed &rhs) const;
-    bool operator>=(const Fixed &rhs) const;
-    bool operator<=(const Fixed &rhs) const;
-    bool operator==(const Fixed &rhs) const;
-    bool operator!=(const Fixed &rhs) const;
+    bool operator>(const Fixed &oth) const;
+    bool operator<(const Fixed &oth) const;
+    bool operator>=(const Fixed &oth) const;
+    bool operator<=(const Fixed &oth) const;
+    bool operator==(const Fixed &oth) const;
+    bool operator!=(const Fixed &oth) const;
 
     // Arithmetic operators
-    Fixed operator+(const Fixed &rhs) const;
-    Fixed operator-(const Fixed &rhs) const;
-    Fixed operator*(const Fixed &rhs) const;
-    Fixed operator/(const Fixed &rhs) const;
+    Fixed operator+(const Fixed &oth) const;
+    Fixed operator-(const Fixed &oth) const;
+    Fixed operator*(const Fixed &oth) const;
+    Fixed operator/(const Fixed &oth) const;
 
     Fixed &operator++();
     Fixed operator++(int);
