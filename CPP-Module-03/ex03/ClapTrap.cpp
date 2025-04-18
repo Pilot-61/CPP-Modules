@@ -1,7 +1,26 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : name("Default"), hitPoints(10), energyPoints(10), attackDamage(0) {
+    std::cout << "ClapTrap " << this->name << " created." << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
     std::cout << "ClapTrap " << this->name << " created." << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other) {
+    *this = other;
+    std::cout << "ClapTrap " << this->name << " copied." << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+    if (this != &other) {
+        this->name = other.name;
+        this->hitPoints = other.hitPoints;
+        this->energyPoints = other.energyPoints;
+        this->attackDamage = other.attackDamage;
+    }
+    return *this;
 }
 
 ClapTrap::~ClapTrap() {
