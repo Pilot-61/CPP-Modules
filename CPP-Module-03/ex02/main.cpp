@@ -23,7 +23,7 @@ int main()
     FragTrap fragtrap("FRTP");
     fragtrap.attack("target1");
     fragtrap.takeDamage(5);
-    fragtrap.takeDamage(2);
+    fragtrap.takeDamage(200);
     fragtrap.highFivesGuys();
     fragtrap.beRepaired(3);
     fragtrap.attack("target2");
