@@ -7,9 +7,9 @@ DiamondTrap::DiamondTrap() :
     FragTrap("Default"),
     name("Default")
 {
-    this->hitPoints = FragTrap::hitPoints;      // 100 from FragTrap
-    this->energyPoints = ScavTrap::energyPoints; // 50 from ScavTrap
-    this->attackDamage = FragTrap::attackDamage; // 30 from FragTrap
+    this->hitPoints = 100;      // 100 from FragTrap
+    this->energyPoints = 50; // 50 from ScavTrap
+    this->attackDamage = 30; // 30 from FragTrap
     std::cout << "DiamondTrap " << this->name << " created." << std::endl;
 }
 
@@ -19,9 +19,9 @@ DiamondTrap::DiamondTrap(std::string name) :
     FragTrap(name),
     name(name)
 {
-    this->hitPoints = FragTrap::hitPoints;      // 100 from FragTrap
-    this->energyPoints = ScavTrap::energyPoints; // 50 from ScavTrap
-    this->attackDamage = FragTrap::attackDamage; // 30 from FragTrap
+    this->hitPoints = 100;      // 100 from FragTrap
+    this->energyPoints = 50; // 50 from ScavTrap
+    this->attackDamage = 30; // 30 from FragTrap
     std::cout << "DiamondTrap " << this->name << " created." << std::endl;
 }
 
