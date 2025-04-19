@@ -32,7 +32,7 @@ int main()
     DiamondTrap diamondTrap("DMT");
     diamondTrap.attack("target1");
     diamondTrap.takeDamage(5);
-    diamondTrap.takeDamage(200);
+    diamondTrap.takeDamage(2);
     diamondTrap.highFivesGuys();
     diamondTrap.beRepaired(3);
     diamondTrap.whoAmI();

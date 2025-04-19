@@ -53,15 +53,7 @@ DiamondTrap::~DiamondTrap()
 
 void DiamondTrap::attack(const std::string& target)
 {
-    if (this->energyPoints > 0 && this->hitPoints > 0)
-    {
-        std::cout << "DiamondTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
-        this->energyPoints--;
-    }
-    else
-    {
-        std::cout << "DiamondTrap " << this->name << " is out of energy or hit points!" << std::endl;
-    }
+    ScavTrap::attack(target);
 }
 
 void DiamondTrap::whoAmI()
