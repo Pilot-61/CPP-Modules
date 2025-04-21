@@ -10,10 +10,8 @@ Dog::Dog() : Animal()
 Dog::Dog(const Dog &src) : Animal(src)
 {
     std::cout << "Dog copy constructor called" << std::endl;
-    *this = src;
     this->brain = new Brain();
-    if (src.brain)
-        *(this->brain) = *(src.brain);
+    *(this->brain) = *(src.brain);
 }
 
 Dog::~Dog()
