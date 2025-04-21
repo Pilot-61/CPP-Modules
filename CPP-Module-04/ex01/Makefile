@@ -1,4 +1,4 @@
-NAME = poly
+NAME = deepcopy
 
 SRC = main.cpp \
 		Brian.cpp \
